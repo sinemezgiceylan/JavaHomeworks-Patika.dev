@@ -26,6 +26,7 @@ public class Main {
             int user = input.nextInt();
 
             switch (user) {
+
                 // Admin kullanıcı ekranı oluşturuldu
                 case 1:
                     System.out.println("Add Platform: 1\nAdd Category: 2\nAdd Film: 3");
@@ -56,7 +57,7 @@ public class Main {
                                     break;
                                 }
                             }
-                            break;
+                        break;
 
                         case 2:
                             // Yeni kategori ekleme ekranı oluşturuldu
@@ -71,8 +72,8 @@ public class Main {
                                 int answer = Integer.parseInt(input.nextLine());
                                 if (answer == 1) {
                                     System.out.println("Enter a category name: ");
-                                    String anotherPlatformName = input.nextLine();
-                                    platformList.add(anotherPlatformName);
+                                    String anotherCategoryName = input.nextLine();
+                                    categoryList.add(anotherCategoryName);
                                     System.out.println("Category added");
                                 } else if (answer == 2) {
                                     break;
@@ -81,7 +82,7 @@ public class Main {
                                     break;
                                 }
                             }
-                            break;
+                        break;
 
                         case 3:
                             // Yeni film ekleme ekranı oluşturuldu
@@ -130,12 +131,37 @@ public class Main {
 
                             filmList.add(newFilm);
                             System.out.println("Film added.");
-
-                            break;
+                        break;
                     }
+                break;
 
+                case 2:
+                    System.out.println("Choose a category: ");
+                    Category newCategory = new Category();
+                    newCategory.categoryNumber(categoryList);
+                    int selectedCategory = input.nextInt();
+                    input.nextLine();
+                    System.out.println("Films in category " + categoryList.get(selectedCategory - 1));
+
+                    int filmCount = 0;
+
+                    for (Film film : filmList) {
+                        for (Category category : film.getCategoryArrayList()) {
+                            if(category.getCategoryName().equals(categoryList.get(selectedCategory - 1 ))) {
+                                System.out.println(film);
+                                filmCount++;
+                            }
+                        }
+                    }
+                    System.out.println("There are " + filmCount + " film in category " + categoryList.get(selectedCategory - 1));
+                break;
+
+                // Çıkış ekranı oluşturuldu
+                case 0:
+                    System.out.println("Logged out!");
+                    isTrue = false;
+                    input.close();
             }
-
 
         } while(isTrue);
     }
