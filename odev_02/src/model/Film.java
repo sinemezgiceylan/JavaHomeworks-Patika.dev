@@ -8,13 +8,13 @@ public class Film {
     private int year;
     private String director;
     private int runTime;
-    private double showTime;
+    private String  showTime;
     private double imdbPoint;
 
     private ArrayList<Platform> platformArrayList = new ArrayList<>();
     private ArrayList<Category> categoryArrayList = new ArrayList<>();
 
-    public Film(String filmName, int year, String director, int runTime, double showTime, double imdbPoint) {
+    public Film(String filmName, int year, String director, int runTime, String showTime, double imdbPoint) {
         this.filmName = filmName;
         this.year = year;
         this.director = director;
@@ -55,11 +55,11 @@ public class Film {
         this.runTime = runTime;
     }
 
-    public double getShowTime() {
+    public String getShowTime() {
         return showTime;
     }
 
-    public void setShowTime(double showTime) {
+    public void setShowTime(String showTime) {
         this.showTime = showTime;
     }
 
